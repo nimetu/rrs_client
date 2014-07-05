@@ -1,0 +1,80 @@
+RACE : 0
+GENDER : 0
+ITEMS :
+1 : igfvu.sitem
+2 : igfpu.sitem
+3 : fy_cheveux_medium01.sitem
+4 : igfau.sitem
+5 : fy_visage.sitem
+6 : igfgu.sitem
+7 : igfbu.sitem
+RACE : 0
+GENDER : 1
+ITEMS :
+1 : igfvu.sitem
+2 : igfpu.sitem
+3 : fy_cheveux_medium01.sitem
+4 : igfau.sitem
+5 : fy_visage.sitem
+6 : igfgu.sitem
+7 : igfbu.sitem
+RACE : 1
+GENDER : 0
+ITEMS :
+1 : igmvu.sitem
+2 : igmpu.sitem
+3 : ma_cheveux01.sitem
+4 : igmau.sitem
+5 : ma_visage.sitem
+6 : igmgu.sitem
+7 : igmbu.sitem
+RACE : 1
+GENDER : 1
+ITEMS :
+1 : igmvu.sitem
+2 : igmpu.sitem
+3 : ma_cheveux01.sitem
+4 : igmau.sitem
+5 : ma_visage.sitem
+6 : igmgu.sitem
+7 : igmbu.sitem
+RACE : 2
+GENDER : 0
+ITEMS :
+1 : igtvu.sitem
+2 : igtpu.sitem
+3 : tr_cheveux_medium01.sitem
+4 : igtau.sitem
+5 : tr_visage.sitem
+6 : igtgu.sitem
+7 : igtbu.sitem
+RACE : 2
+GENDER : 1
+ITEMS :
+1 : igtvu.sitem
+2 : igtpu.sitem
+3 : tr_cheveux_medium01.sitem
+4 : igtau.sitem
+5 : tr_visage.sitem
+6 : igtgu.sitem
+7 : igtbu.sitem
+RACE : 3
+GENDER : 0
+ITEMS :
+1 : igzvu.sitem
+2 : igzpu.sitem
+3 : zo_cheveux_medium01.sitem
+4 : igzau.sitem
+5 : zo_visage.sitem
+6 : igzgu.sitem
+7 : igzbu.sitem
+RACE : 3
+GENDER : 1
+ITEMS :
+1 : igzvu.sitem
+2 : igzpu.sitem
+3 : zo_cheveux_medium01.sitem
+4 : igzau.sitem
+5 : zo_visage.sitem
+6 : igzgu.sitem
+7 : igzbu.sitem

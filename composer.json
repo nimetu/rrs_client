@@ -1,0 +1,25 @@
+{
+	"name":"nimetu/rrs_client",
+	"type":"library",
+	"description":"Php client for Ryzom rendering service",
+	"keywords":["ryzom"],
+	"homepage":"http://bmsite.net",
+	"license":"LGPL",
+	"authors":[
+		{
+			"name":"Meelis Mägi",
+			"email":"nimetu@gmail.com"
+		}
+	],
+	"require":{
+		"php":">=5.4.0",
+		"nimetu/ryzom_extra":"1.*",
+		"nimetu/ryzom_sheets":"1.*"
+	},
+	"autoload":{
+		"psr-0":{
+			"Rrs":"lib/"
+		}
+	},
+	"minimum-stability":"dev"
+}
