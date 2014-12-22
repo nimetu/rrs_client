@@ -53,6 +53,26 @@ class CharacterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Character::getVpa
+     */
+    public function testGetVpa()
+    {
+        $this->assertEquals(0, $this->character->getVpa());
+
+        // properties are all set to 1
+        $vpa = '2310911766417117699';
+        $this->character->setGender(1);
+        $this->character->setSlot(EVisualSlot::CHEST_SLOT, 1, 1);
+        $this->character->setSlot(EVisualSlot::LEGS_SLOT, 1, 1);
+        $this->character->setSlot(EVisualSlot::ARMS_SLOT, 1, 1);
+        $this->character->setSlot(EVisualSlot::HEAD_SLOT, 1, 1);
+        $this->character->setSlot(EVisualSlot::RIGHT_HAND_SLOT, 1);
+        $this->character->setSlot(EVisualSlot::LEFT_HAND_SLOT, 1);
+
+        $this->assertEquals($vpa, $this->character->getVpa());
+    }
+
+    /**
      * @covers Character::setVpb
      */
     public function testSetVpb()
@@ -64,6 +84,21 @@ class CharacterTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals([1,1], $this->character->getSlot(EVisualSlot::HANDS_SLOT));
         $this->assertEquals([1,1], $this->character->getSlot(EVisualSlot::FEET_SLOT));
+    }
+
+    /**
+     * @covers Character::getVpb
+     */
+    public function testGetVpb()
+    {
+        $this->assertEquals(0, $this->character->getVpb());
+
+        $this->character->setSlot(EVisualSlot::HANDS_SLOT, 1, 1);
+        $this->character->setSlot(EVisualSlot::FEET_SLOT, 1, 1);
+
+        // Name=0, HandsModel=1, HandsColor=1, FeetModel=1, FeetColor=1, RTrail=0, LTrail=0
+        $vpb = '137741008896';
+        $this->assertEquals($vpb, $this->character->getVpb());
     }
 
     /**
@@ -79,6 +114,22 @@ class CharacterTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals([1,1,1,1,1,1,1,1], $this->character->getMorph());
         $this->assertEquals([1,1], $this->character->getSlot(EVisualSlot::FACE_SLOT));
         $this->assertEquals([1,1,1,1,1], $this->character->getGabarit());
+    }
+
+    /**
+     * @covers Character::getVpc
+     */
+    public function testGetVpc()
+    {
+        $this->assertEquals(0, $this->character->getVpc());
+
+        $this->character->setMorph([1,1,1,1,1,1,1,1]);
+        $this->character->setSlot(EVisualSlot::FACE_SLOT, 1, 1);
+        $this->character->setGabarit([1,1,1,1,1]);
+
+        // properties are all set to 1
+        $vpc = '1200958908699209';
+        $this->assertEquals($vpc, $this->character->getVpc());
     }
 
     /**

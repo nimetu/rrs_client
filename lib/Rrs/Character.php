@@ -79,6 +79,16 @@ class Character implements StreamInterface
     }
 
     /**
+     * Get VPropVisualA 64bit value after char is built
+     *
+     * @return int|string
+     */
+    public function getVpa()
+    {
+        return $this->vpa->getValue();
+    }
+
+    /**
      * Directly set VPropVisualB 64bit value
      *
      * @param string $vpb
@@ -89,6 +99,17 @@ class Character implements StreamInterface
     }
 
     /**
+     * Get VPropVisualB 64bit value after char is built
+     *
+     * @return int|string
+     */
+    public function getVpb()
+    {
+        return $this->vpb->getValue();
+    }
+
+
+    /**
      * Directly set VPropVisualC 64bit value
      *
      * @param string $vpc
@@ -96,6 +117,16 @@ class Character implements StreamInterface
     public function setVpc($vpc)
     {
         $this->vpc->setValue($vpc);
+    }
+
+    /**
+     * Get VPropVisualC 64bit value after char is built
+     *
+     * @return int|string
+     */
+    public function getVpc()
+    {
+        return $this->vpc->getValue();
     }
 
     /**
