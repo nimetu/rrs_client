@@ -226,11 +226,27 @@ class CharacterFactory
         $vpb->setValue($this->getUnsigned64bit($args['vpb']));
         $vpc = new SPropVisualC();
         $vpc->setValue($this->getUnsigned64bit($args['vpc']));
+        unset($args['vpa'], $args['vpb'], $args['vpc']);
 
+        $hat = ryzom_vs_sheet(EVisualSlot::HEAD_SLOT, $vpa->HatModel);
+        if ($hat) {
+            $args['race'] = substr($hat, 0, 2);
+            // map any haircut to hair so that race check can be done later
+            if (strstr($hat, '_hair_') !== false || strstr($hat, '_cheveux_') !== false) {
+                // uses vs index
+                $args['hair'] = $vpa->HatModel.'/'.$vpa->HatColor;
+                unset($args['head']);
+            } else {
+                unset($args['hair']);
+                // uses sheetid
+                $args['head'] = $hat.'/'.$vpa->HatColor;
+            }
+        } elseif (!isset($args['race'])) {
+            // fallback - unknown haircut and url does not have race set
+            $args['race'] = TPeople::FYROS;
+        }
+        $args['gender'] = strtolower(EGender::toString($vpa->Sex));
         $args['race'] = strtolower(TPeople::toString($this->normalizeRace($args['race'])));
-        $args['gender'] = EGender::toString($vpa->Sex);
-        $race = TPeople::fromString($args['race']);
-        $gender = EGender::fromValue($args['gender']);
 
         // its fine if we fail items
         $s = ryzom_vs_sheet(EVisualSlot::ARMS_SLOT, $vpa->ArmModel);
@@ -252,20 +268,6 @@ class CharacterFactory
         $s = ryzom_vs_sheet(EVisualSlot::CHEST_SLOT, $vpa->JacketModel);
         if ($s) {
             $args['chest'] = $s.'/'.$vpa->JacketColor;
-        }
-
-        $hat = ryzom_vs_sheet(EVisualSlot::HEAD_SLOT, $vpa->HatModel);
-        if ($hat) {
-            // map any haircut to hair so that race check can be done later
-            if (strstr($hat, '_hair_') !== false || strstr($hat, '_cheveux_') !== false) {
-                // uses vs index
-                $args['hair'] = $vpa->HatModel.'/'.$vpa->HatColor;
-                unset($args['head']);
-            } else {
-                unset($args['hair']);
-                // uses sheetid
-                $args['head'] = $hat.'/'.$vpa->HatColor;
-            }
         }
 
         $args['tattoo'] = $vpc->Tattoo;
