@@ -81,10 +81,15 @@ class Character implements StreamInterface
     /**
      * Get VPropVisualA 64bit value after char is built
      *
+     * @param bool $hex
+     *
      * @return int|string
      */
-    public function getVpa()
+    public function getVpa($hex = false)
     {
+        if ($hex) {
+            return $this->vpa->getValueHex();
+        }
         return $this->vpa->getValue();
     }
 
@@ -101,10 +106,16 @@ class Character implements StreamInterface
     /**
      * Get VPropVisualB 64bit value after char is built
      *
+     * @param bool $hex
+     *
      * @return int|string
      */
-    public function getVpb()
+    public function getVpb($hex = false)
     {
+        if ($hex) {
+            return $this->vpb->getValueHex();
+        }
+
         return $this->vpb->getValue();
     }
 
@@ -122,10 +133,16 @@ class Character implements StreamInterface
     /**
      * Get VPropVisualC 64bit value after char is built
      *
+     * @param bool $hex
+     *
      * @return int|string
      */
-    public function getVpc()
+    public function getVpc($hex = false)
     {
+        if ($hex) {
+            return $this->vpc->getValueHex();
+        }
+
         return $this->vpc->getValue();
     }
 
@@ -434,7 +451,7 @@ class Character implements StreamInterface
     {
         $tmp = $this->isFaceShot() ? 'face' : '';
         $tmp .= $this->isCropFaceShot() ? 'crop' : '';
-        return sha1($tmp.$this->getBuffer());
+        return sha1($tmp . $this->getBuffer());
     }
 
     /**
