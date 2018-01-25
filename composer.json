@@ -4,7 +4,7 @@
 	"description":"Php client for Ryzom rendering service",
 	"keywords":["ryzom"],
 	"homepage":"http://bmsite.net",
-	"license":"LGPL",
+	"license":"LGPL-3.0-or-later",
 	"authors":[
 		{
 			"name":"Meelis Mägi",
