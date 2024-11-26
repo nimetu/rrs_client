@@ -11,7 +11,7 @@
 
 namespace Rrs;
 
-
+use PHPUnit\Framework\TestCase;
 use Ryzom\Common\EGender;
 use Ryzom\Common\EVisualSlot;
 use Ryzom\Common\TPeople;
@@ -20,13 +20,13 @@ use Ryzom\Common\TPeople;
  * Class CharacterFactoryTest
  * @package Rrs
  */
-class CharacterFactoryTest extends \PHPUnit_Framework_TestCase
+class CharacterFactoryTest extends TestCase
 {
 
     /** @var CharacterFactory */
     protected $factory;
 
-    public function setUp()
+    public function setUp():void
     {
         $this->factory = new CharacterFactory();
     }
@@ -122,11 +122,12 @@ class CharacterFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(TPeople::ZORAI, $char->getRace(), 'helmet/haircut sheet should not override race');
     }
 
-    public function testCreateWithRaceHelmetNoRace()
+    public function testCreateWithVisuapPropNoRace()
     {
         $args = [
-            'hair' => '16/1', // tr_cheveux_long01.sitem
-            'head' => 'ma_helmet_01.sitem/6',
+            'vpa' => '13902612049692721152',
+            'vpb' => '0',
+            'vpc' => '8406711294342875',
         ];
         $char = $this->factory->create($args);
         $this->assertEquals([15, 6], $char->getSlot(EVisualSlot::HEAD_SLOT), 'helmet should override haircut');
