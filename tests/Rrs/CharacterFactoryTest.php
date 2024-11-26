@@ -110,6 +110,29 @@ class CharacterFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals([26, 6], $char->getSlot(EVisualSlot::HEAD_SLOT), 'helmet should override haircut');
     }
 
+    public function testCreateWithRaceHelmet()
+    {
+        $args = [
+            'race' => 'zo',
+            'hair' => '16/1', // tr_cheveux_long01.sitem
+            'head' => 'ma_helmet_01.sitem/6',
+        ];
+        $char = $this->factory->create($args);
+        $this->assertEquals([15, 6], $char->getSlot(EVisualSlot::HEAD_SLOT), 'helmet should override haircut');
+        $this->assertEquals(TPeople::ZORAI, $char->getRace(), 'helmet/haircut sheet should not override race');
+    }
+
+    public function testCreateWithRaceHelmetNoRace()
+    {
+        $args = [
+            'hair' => '16/1', // tr_cheveux_long01.sitem
+            'head' => 'ma_helmet_01.sitem/6',
+        ];
+        $char = $this->factory->create($args);
+        $this->assertEquals([15, 6], $char->getSlot(EVisualSlot::HEAD_SLOT), 'helmet should override haircut');
+        $this->assertEquals(TPeople::MATIS, $char->getRace(), 'race should of been set from helmet/haircut sheet');
+    }
+
     public function testCreateWithInvalidHaircut()
     {
         $args = [

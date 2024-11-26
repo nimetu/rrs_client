@@ -230,7 +230,14 @@ class CharacterFactory
 
         $hat = ryzom_vs_sheet(EVisualSlot::HEAD_SLOT, $vpa->HatModel);
         if ($hat) {
-            $args['race'] = substr($hat, 0, 2);
+            if (!isset($args['race'])) {
+                // take race from haircut/helmet if possible
+                $args['race'] = strtolower(substr($hat, 0, 2));
+                if (!in_array($args['race'], array('fy', 'ma', 'tr', 'zo'))) {
+                    unset($args['race']);
+                }
+            }
+
             // map any haircut to hair so that race check can be done later
             if (strstr($hat, '_hair_') !== false || strstr($hat, '_cheveux_') !== false) {
                 // uses vs index
@@ -241,10 +248,13 @@ class CharacterFactory
                 // uses sheetid
                 $args['head'] = $hat.'/'.$vpa->HatColor;
             }
-        } elseif (!isset($args['race'])) {
+        }
+
+        if (!isset($args['race'])) {
             // fallback - unknown haircut and url does not have race set
             $args['race'] = TPeople::FYROS;
         }
+
         $args['gender'] = strtolower(EGender::toString($vpa->Sex));
         $args['race'] = strtolower(TPeople::toString($this->normalizeRace($args['race'])));
 
