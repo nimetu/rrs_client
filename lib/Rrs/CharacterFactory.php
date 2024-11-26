@@ -329,8 +329,9 @@ class CharacterFactory
      */
     private function getUnsigned64bit($n)
     {
-        if ($n[0] === '-') {
-            $n = bcadd(bcpow(2, 64), $n);
+        $s = (string)$n;
+        if ($s[0] === '-') {
+            $n = bcadd(bcpow(2, 64), $s);
         }
         return $n;
     }
